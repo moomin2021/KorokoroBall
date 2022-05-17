@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 
     public float power = 10.0f;
     public Rigidbody rigidbody;
+    public GameObject gameOverText;
+    public GameObject resetButton;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             rigidbody.AddForce(new Vector3(-1, 0, 0) * power);
+        }
+
+        if (gameObject.transform.position.y < -10)
+        {
+            gameOverText.SetActive(true);
+            resetButton.SetActive(true);
         }
     }
 }
